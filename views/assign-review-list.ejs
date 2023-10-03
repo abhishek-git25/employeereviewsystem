@@ -1,0 +1,29 @@
+<div class="container">
+<h4 class="my-4">Pending Reviews</h4>
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Assigned Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% employees.forEach((emp)=> { %>
+            <tr>
+                <td><%= emp.username  %></td>
+                <td><%= emp.date.toLocaleDateString() %></td>
+                <td><%= emp.status  %></td>
+                <td>
+                <% if (emp.status === "completed") { %>
+                    <a href="/edit-feedback/<%= emp.user_id  %>" class="btn btn-primary opacity-50" style="pointer-events: none;" disabled>Edit</a>
+                  <% } else { %>
+                    <a href="/edit-feedback/<%= emp.user_id  %>" class="btn btn-primary">Edit</a>
+                  <% } %>
+                </td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>
+</div>

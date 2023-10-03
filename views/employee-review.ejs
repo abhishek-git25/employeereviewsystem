@@ -1,0 +1,65 @@
+<div class="container">
+
+    <div class="row mt-4">
+        <div class="col-md-6 card shadow-sm border-0 p-2">
+            <h4 class="mt-2">Performance Review</h4>
+            <form method="POST" action="/post-review" class="mt-4">
+                <div class="form-group mb-3">
+                    <label for="employeeName">Employee Name:</label>
+                    <select name="employeeId" id="" class="form-select">
+                        <% employees.forEach((employee)=> { %>
+                            <option value="<%= employee._id %>">
+                                <%= employee.username %>
+                            </option>
+
+                            <% }) %>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="reviewDate">Review Date:</label>
+                    <input type="date" class="form-control" id="reviewDate" name="reviewDate" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="performanceRating">Performance Rating:</label>
+                    <input type="number" class="form-control" id="performanceRating" name="rating" min="1" max="10"
+                        required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="reviewComments">Review Comments:</label>
+                    <textarea class="form-control" id="reviewComments" name="reviewcomments" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <!-- List of Performance Reviews -->
+
+        <div class="col-md-6  card shadow-sm border-0 p-3">
+            <h2>Performance Reviews</h2>
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Review Date</th>
+                        <th>Performance Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% reviewedEmployee.forEach((employee)=> { %>
+                        <tr>
+                            <td>
+                                <%= employee.username %>
+                            </td>
+                            <td>
+                                <%= employee.reviewDate %>
+                            </td>
+                            <td>
+                                <%= employee.rating %>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

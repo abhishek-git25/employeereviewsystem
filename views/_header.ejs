@@ -1,0 +1,34 @@
+<header class="bg-light py-3">
+  <div class="px-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="fw-bold"><a href="/" style="text-decoration: none;">Employee Review System</a></h4>
+      </div>
+      <div class="col-md-6 text-end">
+        <!-- Navigation menu -->
+        <nav>
+          <ul class="list-unstyled d-inline">
+            <% if (user.userType === "admin") { %>
+              <li class="d-inline mx-2 text-primary"><a href="/employee-review" style="text-decoration: none;">Employee Review</a></li>
+              <li class="d-inline mx-2 text-primary"><a href="/assign-review" style="text-decoration: none;">Assign Reviewer</a></li>
+            <% } else { %>
+              <li class="d-inline mx-2 text-primary"><a href="/pending-reviews-list" style="text-decoration: none;">Pending Reviews</a></li>
+            <% } %>
+          </ul>
+          <div class="dropdown d-inline">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <% if (user) { %>  Welcome <%= user.username %>  <% } else { %>  Login  <% } %>
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="userDropdown">
+              <% if (user) { %>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              <% } else { %>
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+              <% } %>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

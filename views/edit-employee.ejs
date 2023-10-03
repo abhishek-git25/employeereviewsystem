@@ -1,0 +1,36 @@
+<div class="col-md-6 mx-auto mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="fw-bold">Edit Employee</h3>
+        </div>
+        <div class="card-body">
+            <form action="/update-employee/<%= employee._id %>" method="POST">
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="username" name="username" value="<%= employee.username %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<%= employee.email %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="department" name="department" value="<%= employee.department %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="employeePosition" class="form-label">Position</label>
+                    <input type="text" class="form-control" id="position" name="position" value="<%= employee.position %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="employeePosition" class="form-label">User Type</label>
+                    <select name="userType" id="" class = "form-select">
+                        <option value="admin"  <%= employee.userType == 'admin' ? 'selected' : '' %>>Admin</option>
+                        <option value="employee"  <%= employee.userType === 'employee' ? 'selected' : '' %>>Employee</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Update Employee</button>
+            </form>
+        </div>
+    </div>
+</div>

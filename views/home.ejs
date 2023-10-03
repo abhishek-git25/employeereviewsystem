@@ -1,0 +1,73 @@
+<!-- Add Employee Form -->
+<div class="row mx-2 mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="fw-bold">Add Employee</h3>
+            </div>
+            <div class="card-body">
+                <form action="/addEmployee" method="POST">
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeName" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" name="department" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeePosition" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="position" name="position" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Employee</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee List -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="fw-bold">Employee List</h3>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% employees.forEach((employee) => { %>
+
+                       
+                        <tr>
+                            <td><%=  employee.username %></td>
+                            <td><%=  employee.email  %></td>
+                            <td>
+                                <span class="badge bg-primary rounded-pill text-white">
+                                    <a href="/edit-employee/<%= employee._id %>" class="text-white mx-2" style="text-decoration: none;">Edit</a>|
+                                    <a href="/delete-employee/<%= employee._id %>" class="text-white mx-2" style="text-decoration: none;">Delete</a>
+                                </span>
+                            </td>
+                        </tr>
+                    <%  }) %>
+                        <!-- Repeat this row for each employee -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
